@@ -40,12 +40,17 @@ async function guardarNube() {
 }
 
 async function listarPartidas() {
-  const { data, error } = await sb
-    .from('saves')
-    .select('id, league_index, season, matchday, updated_at')
+  const { data, error } = await sb.from('saves')
+    .select('id, league_index, season, matchday, updated_at, last_result')
     .order('updated_at', { ascending: false });
-  if (error) { console.error(error); return []; }
-  return data;
+
+  if (error) {
+    console.error(error);
+    toast('No se pudieron cargar las partidas');
+    return [];
+  }
+
+  return data || [];
 }
 
 async function cargarNube(id) {
@@ -82,4 +87,30 @@ function mostrarCuenta() {
     if (!username) return;
     registrar(email, password, username);
   }
+}
+
+async function mostrarPartidas() {
+  const partidas = await listarPartidas();
+
+  if (!partidas.length) {
+    toast('No tienes partidas guardadas en la nube');
+    return;
+  }
+
+  const opciones = partidas.map((p, i) =>
+    `${i + 1}. Temporada ${p.season} - Jornada ${p.matchday}`
+  );
+
+  const eleccion = prompt(
+    'ELIGE UNA PARTIDA:\n\n' + opciones.join('\n') +
+    '\n\nEscribe el número de la partida:'
+  );
+
+  const indice = Number(eleccion) - 1;
+
+  if (!Number.isInteger(indice) || indice < 0 || indice >= partidas.length) {
+    return;
+  }
+
+  await cargarNube(partidas[indice].id);
 }

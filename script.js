@@ -136,7 +136,7 @@ function entrenar(i) {
 /* ---------- Vistas ---------- */
 function vHome() {
   return `<div class="hero"><div class="lg">Fútbol<br>Manager</div></div>` +
-    (S.teams || load() ? `<button class="btn w" onclick="cont()">Continuar</button><br><br>` : '') +
+    (S.teams || load() ? `<button class="btn w" onclick="mostrarPartidas()">Continuar</button><br><br>` : '') +
     `<button class="btn ${S.teams || load() ? 'alt' : ''} w" onclick="S.tab='new';render()">Nueva partida</button>` +
     `<br><br><button class="btn alt w" onclick="mostrarCuenta()">Cuenta / Supabase</button>`;
 }
