@@ -27,16 +27,32 @@ async function salir() {
 }
 
 /* ---------- Guardar / cargar ---------- */
+let guardando = false, pendiente = false;
 async function guardarNube() {
+  if (!S.teams) return;
+  if (guardando) { pendiente = true; return; }         // evita duplicados: se guarda otra vez al terminar
+  guardando = true;
+  try {
+    const { data: { user } } = await sb.auth.getUser();
+    if (!user) return toast('Inicia sesión (Cuenta) para guardar en la nube');
+
+    const { tab, fx, ...estado } = S;                  // tab y fx no se guardan
+    const { data, error } = await sb.rpc('save_game', { p_state: estado, p_save_id: cloudId });
+    if (error) { console.error(error); return toast('No se pudo guardar en la nube'); }
+
+    cloudId = data;
+    localStorage.setItem('fm-cloud-id', cloudId);
+  } finally {
+    guardando = false;
+    if (pendiente) { pendiente = false; guardarNube(); }
+  }
+}
+
+async function continuar() {
   const { data: { user } } = await sb.auth.getUser();
-  if (!user || !S.teams) return;                       // sin sesión o sin partida: no hace nada
-
-  const { tab, fx, ...estado } = S;                    // tab y fx no se guardan
-  const { data, error } = await sb.rpc('save_game', { p_state: estado, p_save_id: cloudId });
-  if (error) { console.error(error); return toast('No se pudo guardar en la nube'); }
-
-  cloudId = data;
-  localStorage.setItem('fm-cloud-id', cloudId);
+  if (user && (await listarPartidas()).length) return mostrarPartidas();
+  if (load()) return cont();
+  toast('No hay partidas guardadas');
 }
 
 async function listarPartidas() {

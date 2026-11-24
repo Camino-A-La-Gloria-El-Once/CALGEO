@@ -25,11 +25,11 @@ function toast(m) {
 
 /* ---------- Datos ---------- */
 const LIGAS = [
-  ['Primera Ibérica', 80, ['Alcázar', 'Marisma', 'Ribera', 'Costa Dorada', 'Sierra Norte', 'Vega', 'Puerto Nuevo', 'Altamar']],
-  ['Liga del Norte', 70, ['Bahía', 'Cumbres', 'Roble', 'Faro', 'Ciudadela', 'Piedra Alta', 'Nogal', 'Valle Verde']],
+  ['Primera Ibérica', 64, ['Jan Marc', 'Damas', 'Hugo', 'Costa Dorada', 'Sierra Norte', 'Vega', 'Puerto Nuevo', 'Altamar']],
+  ['Liga del Norte', 21, ['Bahía', 'Cumbres', 'Roble', 'Faro', 'Ciudadela', 'Piedra Alta', 'Nogal', 'Valle Verde']],
 ];
-const NOM = ['Marc', 'Iván', 'Hugo', 'Leo', 'Dani', 'Pablo', 'Raúl', 'Sergio', 'Álex', 'Nico', 'Jorge', 'Biel'];
-const APE = ['Soler', 'Vidal', 'Ortega', 'Mora', 'Ruiz', 'Gil', 'Pons', 'Cano', 'Navarro', 'Ibáñez', 'Roca', 'Prieto'];
+const NOM = ['Marc', 'Iván', 'Hugo', 'Leo', 'Dani', 'Pablo', 'Raúl', 'Sergio', 'Álex', 'Nico', 'Jorge', 'Biel', 'Adrián', 'David', 'Mario', 'Álvaro', 'Daniel', 'Eric', 'Pol', 'Jan', 'Arnau', 'Oriol', 'Nil', 'Gerard', 'Aleix', 'Guillem', 'Carles', 'Albert', 'Javier', 'Carlos', 'Miguel', 'Diego', 'Lucas', 'Mateo', 'Bruno', 'Héctor', 'Marcos', 'Víctor', 'Samuel', 'Gabriel', 'Iker', 'Unai', 'Asier', 'Ander', 'Aitor', 'Ruben', 'Óscar', 'Andrés', 'Manuel', 'Fernando', 'Antonio', 'Pedro', 'Pau', 'Joan', 'Miquel', 'Xavi', 'Roger', 'Tomás', 'Jaime', 'Gonzalo', 'Rodrigo', 'Iván', 'Ismael', 'Cristian', 'Adrià', 'Santi', 'Esteban', 'Ignacio', 'Guillermo', 'Ángel', 'Martín', 'Enzo', 'Thiago', 'Axel', 'Ian', 'Oliver', 'Joel', 'Luca', 'Kevin', 'Rubén', 'Said', 'Mohamed', 'Youssef', 'Amir', 'Dylan', 'Alexis', 'Francesc', 'Roc', 'Lluís', 'Ferran', 'Salva', 'Jaume', 'Rafa', 'Mateu', 'Xavier', 'Víctor', 'Edu', 'Jose', 'Fran', 'Toni', 'Álex', 'Samu', 'Javi', 'Gabi', 'Mauro', 'Hugo', 'Natan', 'Alan', 'Teo', 'Gael', 'Max', 'Adri', 'Isaac', 'Marcelo', 'Sergi', 'Pere', 'Bernat', 'Eloi', 'Dídac', 'Quim', 'Oriol', 'Arnau', 'Gorka', 'Eneko', 'Izan', 'Aarón', 'Félix', 'Lorenzo', 'Néstor', 'Emilio', 'Joaquín', 'Sebastián', 'Alonso', 'Dario', 'Matías', 'León', 'Romeo', 'Arturo', 'Rayan', 'Samir', 'Bilal', 'Karim', 'Ilyas', 'Anas', 'Adam', 'Zakaria', 'Rachid', 'Hamza', 'Malik'];
+const APE = ['Soler', 'Vidal', 'Ortega', 'Mora', 'Ruiz', 'Gil', 'Pons', 'Cano', 'Navarro', 'Ibáñez', 'Roca', 'Prieto', 'García', 'Martínez', 'López', 'Sánchez', 'Fernández', 'González', 'Rodríguez', 'Pérez', 'Gómez', 'Díaz', 'Alonso', 'Romero', 'Torres', 'Domínguez', 'Vázquez', 'Ramos', 'Ramírez', 'Serrano', 'Molina', 'Moreno', 'Castro', 'Ortiz', 'Rubio', 'Marín', 'Delgado', 'Castillo', 'Iglesias', 'Medina', 'Cortés', 'Flores', 'Herrera', 'Aguilar', 'Reyes', 'Cabrera', 'Campos', 'Vega', 'Fuentes', 'Carrasco', 'Peña', 'Carmona', 'Santos', 'Benítez', 'Méndez', 'Suárez', 'Núñez', 'Blanco', 'Calvo', 'Pastor', 'Arias', 'Crespo', 'Parra', 'Santiago', 'Esteban', 'Bravo', 'Gallardo', 'Pascual', 'Soler', 'Ferrer', 'Serra', 'Puig', 'Vila', 'Casals', 'Font', 'Ribas', 'Fornés', 'Mas', 'Costa', 'Bosch', 'Riera', 'Amat', 'Comas', 'Batlle', 'Miró', 'Prat', 'Fargas', 'Farré', 'Solé', 'Grau', 'Valls', 'Sala', 'Pujol', 'Clotet', 'Casas', 'Borrell', 'Nadal', 'Reig', 'Balcells', 'Camps', 'Barrera', 'Escudero', 'Montes', 'Cordero', 'Valero', 'Sáez', 'Márquez', 'Herrero', 'Peiró', 'Roldán', 'Lara', 'León', 'Calderón', 'Acosta', 'Paredes', 'Soto', 'Moya', 'Lorenzo', 'Aguado', 'Carrillo', 'Gallego', 'Benito', 'Pardo', 'Montero', 'Rojas', 'Caballero', 'Vicente', 'Merino', 'Aparicio', 'Castaño', 'Santana', 'Escobar', 'Otero', 'Requena', 'Valdés', 'Cifuentes', 'Beltrán', 'Oliva', 'Aranda', 'Cervera', 'Llopis', 'Andreu', 'Fuster', 'Segura', 'Palau', 'Vendrell', 'Cardona', 'Jordà', 'Salvat', 'Rovira', 'Casadevall', 'Muntaner', 'Oliver', 'Mestre', 'Dalmau', 'Sabaté', 'Barrera', 'Vilalta', 'Pallarès', 'Boix', 'Torras', 'Badosa', 'Casamitjana'];
 const POS = ['POR', 'DEF', 'MED', 'DEL'];
 const XI = { POR: 1, DEF: 4, MED: 4, DEL: 2 };          // 4-4-2
 const IC = {
@@ -82,6 +82,7 @@ function start(li, me) {
   const [, base, names] = LIGAS[li];
   S = { tab: 'partido', li, me, J: 0, season: 1, budget: 15, last: '', champs: [],
         teams: names.map((n, i) => ({ n, sq: squad(base - i * 2.5), ...blank() })), fx: fixtures(names.length), market: market() };
+  if (typeof cloudId !== 'undefined') { cloudId = null; localStorage.removeItem('fm-cloud-id'); }
   save(); render();
 }
 function jugar() {
@@ -136,7 +137,7 @@ function entrenar(i) {
 /* ---------- Vistas ---------- */
 function vHome() {
   return `<div class="hero"><div class="lg">Fútbol<br>Manager</div></div>` +
-    (S.teams || load() ? `<button class="btn w" onclick="mostrarPartidas()">Continuar</button><br><br>` : '') +
+    (S.teams || load() ? `<button class="btn w" onclick="continuar()">Continuar</button><br><br>` : '') +
     `<button class="btn ${S.teams || load() ? 'alt' : ''} w" onclick="S.tab='new';render()">Nueva partida</button>` +
     `<br><br><button class="btn alt w" onclick="mostrarCuenta()">Cuenta / Supabase</button>`;
 }
